@@ -11,6 +11,9 @@ class Student {
 
 };
 
+int numst=0;
+
+
 Student newstudent[1000];
 
 void menu(){
@@ -48,10 +51,32 @@ void menu(){
 
 }
 
+double avg(int marks[], int nummarks) {
+
+    double avgout=0;
+
+    for (int i=0; i<nummarks; i++) {
+
+        avgout+=double(marks[i]);
+
+    }
+
+    return avgout/double(nummarks);
+}
+
 void show() {
 
     cout<<setw(15)<<left<<"Name"<<setw(21)<<left<<"Surname"<<setw(21)<<left<<"Final points (Avg.)"<<endl;
     cout<<setw(59)<<setfill('*')<<"*"<<endl;
+
+    cout<<setfill(' ');
+
+    for (int i=0;i<numst;i++) {
+
+
+        cout<<setw(15)<<left<<newstudent[i].name<<setw(21)<<left<<newstudent[i].surname<<setw(21)<<left<<avg(newstudent[i].mark, newstudent[i].nummarks)<<endl;
+
+    }
 
 }
 
@@ -59,15 +84,19 @@ void input() {
 
     string choose="y";
 
+    int b=0;
+
     while (choose!="n") {
 
         int i=0;
 
         cout<<"Input name of a student:\n";
 
-        cin>>newstudent[0].name;
+        cin>>newstudent[b].name;
 
-        cin>>newstudent[0].surname;
+        cout<<"Input surname of a student:\n";
+
+        cin>>newstudent[b].surname;
 
         cout<<"Keep inputing new marks by entering mark and pressing \"Enter\"\n";
         cout<<"When all marks have been inputed, input any number higher than 10 and hit \"Enter\"\n";
@@ -78,11 +107,11 @@ void input() {
 
             cin>>a;
 
-            if (a<10) {
+            if (a<11) {
 
-                newstudent[0].mark[i]=a;
+                newstudent[b].mark[i]=a;
 
-                newstudent[0].nummarks++;
+                newstudent[b].nummarks++;
 
                 i++;
 
@@ -95,24 +124,24 @@ void input() {
             }
         }
 
-        cout<<newstudent[0].name<<endl;
-        cout<<newstudent[0].surname<<endl;
-        for (i=0; i<newstudent[0].nummarks; i++) {
-
-            cout<<newstudent[0].mark[i]<<endl;
-
-        }
-
         cout<<"Do you want to add one more student? (Enter \"y\" or \"n\")\n";
 
         cin>>choose;
 
+        b++;
+
+        numst++;
+
         }
     }
+
+
 
 int main()
 {
     input();
+
+    show();
 
     return 0;
 }
