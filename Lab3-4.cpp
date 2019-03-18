@@ -6,8 +6,12 @@ class Student {
     public:
         string name = "Name was not defined";
         string surname = "Surname was not defined";
+        int mark[100];
+        int nummarks=0;
 
 };
+
+Student newstudent[1000];
 
 void menu(){
 
@@ -53,7 +57,57 @@ void show() {
 
 void input() {
 
+    string choose="y";
 
+    while (choose!="n") {
+
+        int i=0;
+
+        cout<<"Input name of a student:\n";
+
+        cin>>newstudent[0].name;
+
+        cin>>newstudent[0].surname;
+
+        cout<<"Keep inputing new marks by entering mark and pressing \"Enter\"\n";
+        cout<<"When all marks have been inputed, input any number higher than 10 and hit \"Enter\"\n";
+
+        while (true) {
+
+            int a;
+
+            cin>>a;
+
+            if (a<10) {
+
+                newstudent[0].mark[i]=a;
+
+                newstudent[0].nummarks++;
+
+                i++;
+
+            }
+
+            else {
+
+                break;
+
+            }
+        }
+
+        cout<<newstudent[0].name<<endl;
+        cout<<newstudent[0].surname<<endl;
+        for (i=0; i<newstudent[0].nummarks; i++) {
+
+            cout<<newstudent[0].mark[i]<<endl;
+
+        }
+
+        cout<<"Do you want to add one more student? (Enter \"y\" or \"n\")\n";
+
+        cin>>choose;
+
+        }
     }
 
 int main()
