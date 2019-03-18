@@ -2,6 +2,13 @@
 #include <iomanip>
 using namespace std;
 
+class Student {
+    public:
+        string name = "Name was not defined";
+        string surname = "Surname was not defined";
+
+};
+
 void menu(){
 
     int choose;
@@ -47,14 +54,11 @@ void show() {
 void input() {
 
 
-
-}
+    }
 
 int main()
 {
-    menu();
-
-    show();
+    input();
 
     return 0;
 }
