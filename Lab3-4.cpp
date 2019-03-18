@@ -7,6 +7,7 @@ class Student {
         string name = "Name was not defined";
         string surname = "Surname was not defined";
         int mark[100];
+        int exam=0;
         int nummarks=0;
 
 };
@@ -51,7 +52,7 @@ void menu(){
 
 }
 
-double avg(int marks[], int nummarks) {
+double avg(int marks[], int nummarks, int exam) {
 
     double avgout=0;
 
@@ -61,7 +62,7 @@ double avg(int marks[], int nummarks) {
 
     }
 
-    return avgout/double(nummarks);
+    return 0.4*(avgout/double(nummarks))+0.6*double(exam);
 }
 
 void show() {
@@ -74,7 +75,7 @@ void show() {
     for (int i=0;i<numst;i++) {
 
 
-        cout<<setw(15)<<left<<newstudent[i].name<<setw(21)<<left<<newstudent[i].surname<<setw(21)<<left<<avg(newstudent[i].mark, newstudent[i].nummarks)<<endl;
+        cout<<setw(15)<<left<<newstudent[i].name<<setw(21)<<left<<newstudent[i].surname<<setw(21)<<left<<avg(newstudent[i].mark, newstudent[i].nummarks, newstudent[i].exam)<<endl;
 
     }
 
@@ -123,6 +124,10 @@ void input() {
 
             }
         }
+
+        cout<<"Input exam result\n";
+
+        cin>>newstudent[b].exam;
 
         cout<<"Do you want to add one more student? (Enter \"y\" or \"n\")\n";
 
