@@ -2,6 +2,8 @@
 #include <iomanip>
 #include <algorithm>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 class Student {
@@ -84,8 +86,6 @@ double med(vector<int> marks, int exam) {
     }
 }
 
-
-
 void show() {
 
     cout<<setw(12)<<left<<"Name"<<setw(18)<<left<<"Surname"<<setw(18)<<left<<"Final points (Avg.)/Final points(Med.)"<<endl;
@@ -109,8 +109,6 @@ void input() {
 
     string choose="y";
 
-    int b=0;
-
     while (choose!="n") {
 
         student.push_back(Student());
@@ -125,39 +123,73 @@ void input() {
 
         cin>>student[i].surname;
 
-        cout<<"Keep inputing new marks by entering mark and pressing \"Enter\"\n";
-        cout<<"When all marks have been inputed, hit \"Enter\" without inputing anything\n";
+        cout<<"Do you want to input marks manually, if no, I will generate them randomly?\n";
+        cout<< "Press y/n and hit \"Enter\"\n";
+        string randch;
+        cin>>randch;
 
-        while (true) {
+        if (randch=="y") {
 
-            int buffer;
+            cout<<"Keep inputing new marks by entering mark and pressing \"Enter\"\n";
+            cout<<"When all marks have been inputed, input number smaller than 1 or bigger than 10 hit \"Enter\"\n";
 
-            cin>>buffer;
+            while (true) {
 
-            if (buffer<11&&buffer>0) {
+                int buffer;
 
-                student[i].mark.push_back(buffer);
+                cin>>buffer;
+
+                if (buffer<11&&buffer>0) {
+
+                    student[i].mark.push_back(buffer);
+
+                }
+                else {
+                    break;
+                }
+
 
             }
-            else {
-                break;
+
+            cout<<"Input exam result\n";
+
+            cin>>student[i].exam;
+
+            cout<<"Do you want to add one more student? (Enter \"y\" or \"n\")\n";
+
+            cin>>choose;
+
+
             }
 
+        else {
+
+            int marksw;
+
+            cout<<"How many marks should this student have?\n";
+
+            cin>>marksw;
+
+            srand(time(nullptr));
+
+            for (int z=0; z<marksw; z++) {
+
+                int g=rand()%10+1;
+
+                student[i].mark.push_back(g);
+
+            }
+
+            student[i].exam=rand()%10+1;
+
+            cout<<"Do you want to add one more student? (Enter \"y\" or \"n\")\n";
+
+            cin>>choose;
 
         }
 
-        cout<<"Input exam result\n";
-
-        cin>>student[i].exam;
-
-        cout<<"Do you want to add one more student? (Enter \"y\" or \"n\")\n";
-
-        cin>>choose;
-
-        b++;
-
-        }
     }
+}
 
 int main()
 {
