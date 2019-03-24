@@ -1,22 +1,21 @@
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
+#include <vector>
 using namespace std;
 
 class Student {
     public:
         string name = "Name was not defined";
         string surname = "Surname was not defined";
-        int mark[100];
+        vector<int> mark;
         int exam=0;
         int nummarks=0;
 
 };
 
-int numst=0;
 
-
-Student newstudent[1000];
+vector<Student> student;
 
 void menu(){
 
@@ -53,49 +52,36 @@ void menu(){
 
 }
 
-double avg(int marks[], int nummarks, int exam) {
+double avg(vector<int> marks, int exam) {
 
     double avgout=0;
 
-    for (int i=0; i<nummarks; i++) {
+    for (int i=0; i<marks.size(); i++) {
 
         avgout+=double(marks[i]);
 
     }
 
-    return 0.4*(avgout/double(nummarks))+0.6*double(exam);
+    return 0.4*(avgout/double(marks.size()))+0.6*double(exam);
 }
 
-double med(int marks[], int nummarks, int exam) {
+double med(vector<int> marks, int exam) {
 
-    int marks1 [nummarks+1];
+    marks.push_back(exam);
 
-    int i=0;
+    sort(marks.begin(), marks.end());
 
-    for (int i=0; i<nummarks; i++) {
+    if (marks.size()%2!=0) {
 
-        marks1[i]=marks[i];
-
-    }
-
-    marks1[nummarks]=exam;
-
-    sort(marks1, marks1+nummarks+1);
-
-   for (int i=0; i<(nummarks+1); i++) {
-
-    if ((nummarks+1)%2!=0) {
-
-        return double(marks1[int((nummarks+1)/2+0.5)]);
+        return double(marks[int(marks.size()/2+0.5)]);
 
     }
 
     else {
 
-        return double(marks1[(nummarks+1)/2]+marks1[((nummarks+1)/2)-1])/2;
+        return double(marks[marks.size()/2]+marks[((marks.size()+1)/2)-1])/2;
 
     }
-   }
 }
 
 
@@ -107,13 +93,13 @@ void show() {
 
     cout<<setfill(' ');
 
-    for (int i=0;i<numst;i++) {
+    for (int i=0;i<student.size();i++) {
 
 
-        cout<<setw(12)<<left<<newstudent[i].name;
-        cout<<setw(18)<<left<<newstudent[i].surname;
-        cout<<setw(20)<<left<<avg(newstudent[i].mark, newstudent[i].nummarks, newstudent[i].exam);
-        cout<<setw(18)<<left<<med(newstudent[i].mark, newstudent[i].nummarks, newstudent[i].exam)<<endl;
+        cout<<setw(12)<<left<<student[i].name;
+        cout<<setw(18)<<left<<student[i].surname;
+        cout<<setw(20)<<left<<avg(student[i].mark, student[i].exam);
+        cout<<setw(18)<<left<<med(student[i].mark, student[i].exam)<<endl;
 
     }
 
@@ -127,53 +113,48 @@ void input() {
 
     while (choose!="n") {
 
-        int i=0;
+        student.push_back(Student());
+
+        int i=student.size()-1;
 
         cout<<"Input name of a student:\n";
 
-        cin>>newstudent[b].name;
+        cin>>student[i].name;
 
         cout<<"Input surname of a student:\n";
 
-        cin>>newstudent[b].surname;
+        cin>>student[i].surname;
 
         cout<<"Keep inputing new marks by entering mark and pressing \"Enter\"\n";
-        cout<<"When all marks have been inputed, input any number higher than 10 and hit \"Enter\"\n";
+        cout<<"When all marks have been inputed, hit \"Enter\" without inputing anything\n";
 
         while (true) {
 
-            int a;
+            int buffer;
 
-            cin>>a;
+            cin>>buffer;
 
-            if (a<11) {
+            if (buffer<11&&buffer>0) {
 
-                newstudent[b].mark[i]=a;
-
-                newstudent[b].nummarks++;
-
-                i++;
+                student[i].mark.push_back(buffer);
 
             }
-
             else {
-
                 break;
-
             }
+
+
         }
 
         cout<<"Input exam result\n";
 
-        cin>>newstudent[b].exam;
+        cin>>student[i].exam;
 
         cout<<"Do you want to add one more student? (Enter \"y\" or \"n\")\n";
 
         cin>>choose;
 
         b++;
-
-        numst++;
 
         }
     }
