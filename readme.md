@@ -1,10 +1,10 @@
 # Laboratory work No 3-4
 
+C++ Programming Subject
+
 Performed by Mrfu-17 group student Daniel Beliavskij
 
-## Current version v0.3
-
-C++ Programming Subject
+## Current version v0.2
 
 As for version v0.3 programm has below listed fetures:
 
