@@ -53,6 +53,13 @@ double med(vector<int> marks, int exam) {
 
 void show() {
 
+    sort(student.begin(), student.end(), [](const Student& lhs, const Student& rhs)
+         {
+
+    return lhs.name < rhs.name;
+
+});
+
     cout<<setw(12)<<left<<"Name"<<setw(18)<<left<<"Surname"<<setw(18)<<left<<"Final points (Avg.)/Final points(Med.)"<<endl;
     cout<<setw(69)<<setfill('*')<<"*"<<endl;
 
@@ -158,7 +165,6 @@ void input() {
 
 void read() {
 
-//    string line;
     ifstream studfile("students.txt");
     if (studfile.is_open()) {
 
@@ -168,9 +174,9 @@ void read() {
 
             student.push_back(Student());
 
-            getline(studfile, student[student.size()-1].name, ' ');
-
             getline(studfile, student[student.size()-1].surname, ' ');
+
+            getline(studfile, student[student.size()-1].name, ' ');
 
             for (int i=0; i<5; i++) {
                 string m;
@@ -217,6 +223,7 @@ void menu(){
 
             case 3:
                 read();
+                break;
 
             case 0:
                 break;
