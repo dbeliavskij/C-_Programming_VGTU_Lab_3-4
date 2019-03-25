@@ -17,7 +17,6 @@ class Student {
 
 };
 
-
 vector<Student> student;
 
 double avg(vector<int> marks, int exam) {
@@ -157,7 +156,40 @@ void input() {
     }
 }
 
+void read() {
 
+//    string line;
+    ifstream studfile("students.txt");
+    if (studfile.is_open()) {
+
+        studfile.ignore(255, '\n');
+
+        while(!studfile.eof()) {
+
+            student.push_back(Student());
+
+            getline(studfile, student[student.size()-1].name, ' ');
+
+            getline(studfile, student[student.size()-1].surname, ' ');
+
+            for (int i=0; i<5; i++) {
+                string m;
+
+                getline(studfile,m, ' ');
+
+                student[student.size()-1].mark.push_back(stoi(m));
+
+            }
+
+          studfile.ignore(255, '\n');
+
+        }
+
+
+    }
+
+studfile.close();
+}
 
 void menu(){
 
@@ -182,10 +214,10 @@ void menu(){
             case 2:
                 show();
                 break;
-/*
+
             case 3:
                 read();
-*/
+
             case 0:
                 break;
 
