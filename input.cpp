@@ -19,8 +19,9 @@ void input(vector<Student> &student) {
 
         cin>>student[i].surname;
 
+
         cout<<"Do you want to input marks manually, if no, I will generate them randomly?\n";
-        cout<< "Press y/n and hit \"Enter\"\n";
+        cout<< "Press y for yes, anything for no and hit \"Enter\"\n";
         string randch;
         cin>>randch;
 
@@ -62,9 +63,28 @@ void input(vector<Student> &student) {
 
             int marksw;
 
+                    bool cond=false;
+
+        do {
             cout<<"How many marks should this student have?\n";
 
             cin>>marksw;
+
+            cond = cin.fail();
+            if (cond) {
+                cout<<"Wrong input\nPlease enter an integer value\n";
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
+            else if (marksw<1) {
+                cout<<"Wrong input\nPlease enter an integer value\n";
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cond=true;
+            }
+        } while(cond);
+
+
 
             srand(time(nullptr));
 
