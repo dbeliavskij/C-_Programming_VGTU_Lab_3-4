@@ -1,25 +1,11 @@
 # Laboratory work No 3-4
 
-<<<<<<< HEAD
-C++ Programming Subject
-||||||| merged common ancestors
-Performed by Mrfu-17 group student Daniel Beliavskij
-=======
 C++ Programming Subject
 
 Performed by Mrfu-17 group student Daniel Beliavskij
->>>>>>> b0593e5d1760d5a9ce321ce9a914518542f18422
 
-Performed by Mrfu-17 group student Daniel Beliavskij
-
-<<<<<<< HEAD
 ## Current version v0.2
 
-||||||| merged common ancestors
-C++ Programming Subject
-
-=======
->>>>>>> b0593e5d1760d5a9ce321ce9a914518542f18422
 As for version v0.3 programm has below listed fetures:
 
 * Input student data (name, surname, marks, exam mark)
