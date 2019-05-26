@@ -2,8 +2,10 @@
 
 void read(vector<Student> &student) {
 
+
+    try {
     ifstream studfile("students.txt");
-    if (studfile.is_open()) {
+
 
         studfile.ignore(255, '\n');
 
@@ -29,8 +31,14 @@ void read(vector<Student> &student) {
         }
 
 
-    }
 
 studfile.close();
+    }
+    catch (const std::exception&) {
+    cout<<"Something wrong with your file! Possible solutions:"<<endl;
+    cout<<"Check that the file is in the same folder as program"<<endl;
+    cout<<"Check that the file name is \"students.txt\""<<endl;
+
+    }
 }
 
