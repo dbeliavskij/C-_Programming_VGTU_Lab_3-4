@@ -3,7 +3,7 @@
 
 int main()
 {
-    int choose;
+    int choose=1;
 
     while (choose!=0) {
 
@@ -13,8 +13,21 @@ int main()
         cout<<"2. Display existing entries\n";
         cout<<"3. Read entries from file\n";
         cout<<"0. Exit\n";
-        cin>>choose;
-//        system("CLR || clear");
+
+        bool cond=false;
+
+        do {
+            cin>>choose;
+            cond = cin.fail();
+            if (cond) {
+                cout<<"Wrong input\nTo choose an action press number of the action and hit \"Enter\"\n";
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
+        } while(cond);
+
+
+
         switch(choose) {
 
             case 1:
@@ -41,7 +54,7 @@ int main()
 
     }
     cin.ignore(256, '\n');                         /// pauses blokas, veikia bet kokioje sistemoje.
- //   cout << "Press enter any key to continue...";
-//    cin.get();
+
+
     return 0;
 }
