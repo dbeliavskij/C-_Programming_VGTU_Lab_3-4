@@ -1,3 +1,10 @@
 Surname Name HW1 HW2 HW3 HW4 HW5 Exam
 Surname1 Name1 8 9 10 6 10 9
 Surname2 Name2 7 10 8 5 4 6
+Surname4 Name4 8 9 10 6 10 9
+Surname3 Name3 7 10 8 5 4 6
+Surname6 Name6 8 9 10 6 10 9
+Surname5 Name5 7 10 8 5 4 6
+Surname8 Name8 8 9 10 6 10 9
+Surname9 Name9 7 10 8 5 4 6
+Surname7 Name7 8 9 10 6 10 9
